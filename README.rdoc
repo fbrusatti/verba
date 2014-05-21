@@ -1,28 +1,21 @@
-== README
+== start-r4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a greenfield rails 4 application used to start new projects
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* To avoid share sensitive information this project configure a ```local_env.yml``` file as proposse this post http://railsapps.github.io/rails-environment-variables.html in the option number 3
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Repository Configuration
+* clone it
+
+* Replace rails-r4 and Start with the name of your project.
+
+* Change origin: ```git remote set-url origin git://new.url.here```
+
+
+== App Configuration
+* cp ```config/database_example.yml``` to ```config/database.yml``` and configure it
+
+* cp ```config/local_env_example.yml``` to ```config/local_env.yml``` and configure it
+
+* run ```bundle install```
