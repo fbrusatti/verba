@@ -35,6 +35,9 @@ gem 'devise'
 # framework for creating administration style interfaces.
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+# to print nice models
+gem 'awesome_print'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
