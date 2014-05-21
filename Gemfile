@@ -43,9 +43,18 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'faker'
+
 group :development, :test do
   gem 'byebug'
   gem 'letter_opener', '~> 1.2.0'
   gem 'quiet_assets'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
