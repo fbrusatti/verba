@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 # Flexible authentication solution for Rails
 gem 'devise'
 
+# framework for creating administration style interfaces.
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
