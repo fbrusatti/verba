@@ -1,14 +1,18 @@
 == start-r4
 
-This is a greenfield rails 4 application used to start new projects
+This is a project used to start greenfield project in rails 4.
 
-* To avoid share sensitive information this project configure a ```local_env.yml``` file as proposse this post http://railsapps.github.io/rails-environment-variables.html in the option number 3
+* To avoid share sensitive information this project configure a ```local_env.yml``` file as proposse [this][http://railsapps.github.io/rails-environment-variables.html] post in the option number 3
+
+* Almost all projects that I've started needs an ```User``` model, so this project has an ```User``` model with basic authentication through devise gem
+
+* It has an Admin site using active-admin gem
 
 
 == Repository Configuration
-* clone it
+* Clone it
 
-* Replace rails-r4 and Start with the name of your project.
+* Replace rails-r4 and the word Start with the name of your project in everywhere.
 
 * Change origin: ```git remote set-url origin git://new.url.here```
 
