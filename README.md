@@ -24,3 +24,5 @@ This is a project used to start greenfield projects in rails 4.
 * cp ```config/local_env_example.yml``` to ```config/local_env.yml``` and configure it
 
 * run ```bundle install```
+
+* run test suite ```bundle exec rspec```
