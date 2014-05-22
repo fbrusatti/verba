@@ -7,6 +7,11 @@ Start::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/about'    => 'pages#show', id: 'about'
+  get '/contact'  => 'pages#show', id: 'contact'
+  get '/privacy'  => 'pages#show', id: 'privacy'
+  get '/terms'    => 'pages#show', id: 'terms'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
