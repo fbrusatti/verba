@@ -1,6 +1,6 @@
 == start-r4
 
-This is a project used to start greenfield project in rails 4.
+This is a project used to start greenfield projects in rails 4.
 
 * To avoid share sensitive information this project configure a ```local_env.yml``` file as proposse [this][http://railsapps.github.io/rails-environment-variables.html] post in the option number 3
 
@@ -8,6 +8,7 @@ This is a project used to start greenfield project in rails 4.
 
 * It has an Admin site using active-admin gem
 
+* It has a basic bootstrap layout very easy to follow and some static pages to start
 
 == Repository Configuration
 * Clone it
