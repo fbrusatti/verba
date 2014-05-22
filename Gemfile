@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Flexible authentication solution for Rails
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 
 # framework for creating administration style interfaces.
 gem 'activeadmin', github: 'gregbell/active_admin'
