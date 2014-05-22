@@ -57,4 +57,6 @@ RSpec.configure do |config|
   end
 
   config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
+
+  OmniAuth.config.test_mode = true
 end
