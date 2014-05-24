@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Start::Application.load_tasks
+Verba::Application.load_tasks

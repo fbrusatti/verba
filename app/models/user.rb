@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # == Associations
   has_many :authorizations
+  has_many :messages
 
   # == Class Methods
   def self.from_omniauth(auth, current_user)

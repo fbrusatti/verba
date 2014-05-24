@@ -1,5 +1,10 @@
 Verba::Application.routes.draw do
+  resources :users do
+    resources :messages
+  end
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
