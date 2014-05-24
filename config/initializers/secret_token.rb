@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Start::Application.config.secret_key_base = '1bdc491e27d489bfa5f24c260d388f12532cd5426e95e18f5086aba743d5c5ee67d8ee1abf9a20b4675547eecac1773087a85696fe2360bca050b11f0d713e62'
+Verba::Application.config.secret_key_base = '1bdc491e27d489bfa5f24c260d388f12532cd5426e95e18f5086aba743d5c5ee67d8ee1abf9a20b4675547eecac1773087a85696fe2360bca050b11f0d713e62'
