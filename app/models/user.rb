@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   # == Devise modules (Other availables: :confirmable, :lockable, :timeoutable)
-  devise :database_authenticatable, :registerable, :recoverable, :validatable,
+  devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :omniauthable
 
   # == Associations
@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   # == Validations
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, presence: true
+  with_options :if => :password_required? do |v|
+    v.validates_presence_of     :password
+    v.validates_confirmation_of :password
+    v.validates_length_of       :password, :within => Devise.password_length, :allow_blank => true
+  end
 
   # == Callbacks
   before_validation :check_username, if: 'self.new_record?'
@@ -57,6 +62,10 @@ class User < ActiveRecord::Base
   end
 
   private
+  def password_required?
+    !persisted? || !password.blank? || !password_confirmation.blank?
+  end
+
   def self.create_devise_user(email, username)
     user = User.new
     user.email = email
@@ -67,6 +76,7 @@ class User < ActiveRecord::Base
   end
 
   def check_username
+    self.username = self.login
     self.username = self.email.split('@').first if self.username.blank?
   end
 end

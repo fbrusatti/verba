@@ -2,7 +2,7 @@ class MessagesController < InheritedResources::Base
   before_filter :load_user
 
   def index
-    @messages = current_user.messages
+    @messages = @user.messages
   end
 
   def show
@@ -51,7 +51,7 @@ class MessagesController < InheritedResources::Base
 
   private
   def load_user
-    @user = User.find(params[:user_id] || params[:id]) || current_user
+    @user = User.find_by_username(params[:id]) || current_user
   end
 
   def message_params
