@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
   # == Devise modules (Other availables: :confirmable, :lockable, :timeoutable)
-  devise :database_authenticatable, :recoverable, :rememberable,
-         :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :validatable,
+         :rememberable, :trackable, :omniauthable
 
   # == Associations
   has_many :authorizations

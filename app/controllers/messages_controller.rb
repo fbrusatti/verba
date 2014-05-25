@@ -9,7 +9,7 @@ class MessagesController < InheritedResources::Base
   end
 
   def new
-    @message = message.new
+    @message = Message.new
   end
 
   def edit
@@ -48,9 +48,6 @@ class MessagesController < InheritedResources::Base
       format.json { head :no_content }
     end
   end
-
-
-
 
   private
   def load_user

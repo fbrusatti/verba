@@ -1,4 +1,4 @@
-<%= form_for(@message) do |f| %>
+<%= bootstrap_form_for([current_user, @message]) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -11,15 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_field :subject %>
+  <%= f.text_area :body %>
+
+  <%= f.submit %>
 <% end %>
