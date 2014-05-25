@@ -2,10 +2,11 @@ class MessagesController < InheritedResources::Base
   before_filter :load_user
 
   def index
-    @messages = @user.messages
+    @messages = current_user.messages
   end
 
   def show
+    @message = Message.find(params[:id])
   end
 
   def new
@@ -16,11 +17,11 @@ class MessagesController < InheritedResources::Base
   end
 
   def create
-    @message = current_user.messages.new(message_params)
+    @message = @user.messages.new(message_params)
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to user_messages_path(current_user), notice: 'message was successfully created.' }
+        format.html { redirect_to api_user_messages_path(current_user), notice: 'message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @message }
       else
         format.html { render action: 'new' }
@@ -51,7 +52,7 @@ class MessagesController < InheritedResources::Base
 
   private
   def load_user
-    @user = User.find_by_username(params[:id]) || current_user
+    @user = User.find_by_username(params[:id] || params[:user_id])
   end
 
   def message_params

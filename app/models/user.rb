@@ -61,6 +61,12 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  # == Instance Methods
+  def to_param
+    username
+  end
+
   private
   def password_required?
     !persisted? || !password.blank? || !password_confirmation.blank?

@@ -17,8 +17,8 @@ Verba::Application.routes.draw do
   get '/privacy'  => 'pages#show', id: 'privacy'
   get '/terms'    => 'pages#show', id: 'terms'
 
-
-  get '/:id/messages', :to => "messages#index", :as => :api_user_messages
+  get  '/:id/messages', :to => "messages#index", :as => :api_user_messages
+  post '/:id/message', :to => "messages#create", :as => :api_user_message
 
 
   # Example of regular route:
