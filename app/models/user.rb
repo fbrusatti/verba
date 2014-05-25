@@ -8,25 +8,42 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :messages
 
-  # == Virtual attribute
-  # for authenticating by either username or email
+  # == Virtual attribute (for authenticating by either username or email)
   attr_accessor :login
+
+  # == Validations
+  validates :username, uniqueness: true
+
+  # == Callbacks
+  before_validation :check_username, if: 'self.new_record?'
 
   # == Class Methods
   def self.from_omniauth(auth, current_user)
     authorization = Authorization.where({ provider: auth.provider.to_s, uid: auth.uid.to_s }).first_or_initialize
 
     authorization.fetch_info(auth)
+
     if authorization.user.blank?
-      user = current_user.blank? ? User.where('email = ?', auth.info.email).first : current_user
-      user = create_devise_user(auth.info.email, auth.info.nickname) if user.blank?
+      # if there is a user in params use it
+      user = current_user
+
+      # find an already register user with the same email or username
+      if current_user.blank?
+        user = User.where(["lower(username) = :username OR lower(email) = :email",
+                          { username: auth.info.nickname, email: auth.info.email }]).first
+      end
+
+      # if there is no user as params neither exists a user with those params create a new one
+      if user.blank? # ToDo if username was the found record, check that it's the same using auth uid
+        user = create_devise_user(auth.info.email, auth.info.nickname)
+      end
+
+      # give to the authorization the user
       authorization.user = user
-    else
-      user = authorization.user
     end
     authorization.save!
 
-    user
+    authorization.user
   end
 
   # Override Devise method to allow find users by username or email
@@ -39,7 +56,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   private
   def self.create_devise_user(email, username)
     user = User.new
@@ -48,5 +64,9 @@ class User < ActiveRecord::Base
     user.password = Devise.friendly_token[0, 20]
     user.save!
     user
+  end
+
+  def check_username
+    self.username = self.email.split('@').first if self.username.blank?
   end
 end

@@ -1,3 +1,5 @@
+<h2>Messages to <%= current_user.username %></h2>
+
 <% if current_user.messages.present? %>
   <div class="table-responsive">
     <table class="table table-bordered">
@@ -13,6 +15,7 @@
       <tbody>
         <% current_user.messages.each do |message| %>
           <tr>
+            <td></td>
             <td><%= message.email %></td>
             <td><%= message.subject %></td>
             <td><%= message.body %></td>

@@ -53,4 +53,8 @@ class MessagesController < InheritedResources::Base
   def load_user
     @user = User.find(params[:user_id] || params[:id]) || current_user
   end
+
+  def message_params
+    params.require(:message).permit(:body, :email, :subject, :user_id)
+  end
 end
