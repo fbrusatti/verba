@@ -1,4 +1,6 @@
 class MessagesController < InheritedResources::Base
+  # == Skip authenticity_token verification to API routes
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter :load_user
 
   def index
