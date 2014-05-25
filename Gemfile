@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.1'
 
+# To enable STDOUT logging in Rails 4 This gem will also configure your app to serve assets in production
+gem 'rails_12factor', group: :production
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
 
