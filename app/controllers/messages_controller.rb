@@ -24,7 +24,7 @@ class MessagesController < InheritedResources::Base
     respond_to do |format|
       if @message.save
         format.html { redirect_to api_user_messages_path(current_user), notice: 'message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @message }
+        format.json { render action: 'show', status: :created, location: user_message_path(@user, @message) }
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
