@@ -1,29 +1,30 @@
 <h1>Listing messages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% if current_user.messages.present? %>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>From</th>
+          <th>Subject</th>
+          <th>Body</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.subject %></td>
-        <td><%= message.body %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% current_user.messages.each do |message| %>
+          <tr>
+            <td><%= message.email %></td>
+            <td><%= message.subject %></td>
+            <td><%= message.body %></td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+    <h2>You don't have messages yet</h2>
+<% end -%>
 
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+<%= link_to 'New Message', new_user_message_path(current_user), class: 'btn btn-primary', role: 'button' %>

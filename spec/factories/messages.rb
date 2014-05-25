@@ -5,5 +5,6 @@ FactoryGirl.define do
     user
     subject Faker::Lorem.sentence
     body    Faker::Lorem.paragraph
+    email   Faker::Internet.email
   end
 end

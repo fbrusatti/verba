@@ -28,17 +28,7 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <% if current_page?(root_path) %>
-    <% if content_for?(:jumbotron) %>
-      <div class="jumbotron">
-        <div class="container">
-          <%= yield :jumbotron %>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="container">
-  <% end %>
+  <div class="container">
 
   <%= yield %>
 

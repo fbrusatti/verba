@@ -1,8 +1,7 @@
 module ApplicationHelper
 
   def site_name
-    # Change the value below between the quotes.
-    "Project Name"
+    'Verba'
   end
 
   def site_url
